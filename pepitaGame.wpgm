@@ -6,9 +6,21 @@ program pepitaGame {
 	game.height(10) 		//valor por defecto 5
 	game.width(10) 			//valor por defecto 5
 	game.cellSize(50) 		//valor por defecto 50
-	//search assets in assets folder, for example, for the background
-	//Valor por defecto game.ground("ground.png")
-	
-	//game.addVisual(pepita)
-	game.start()	
+
+
+	game.boardGround("fondo.jpg")
+	game.addVisualCharacter(pepita)
+	pepita.centrar()
+	game.addVisual(silvestre)
+
+	game.whenCollideDo(pepita, { elemento =>
+    if (elemento == silvestre) {
+		pepita.imagen("pepita-gris.png")
+		pepita.image()
+	}
+	else {
+		null
+	}
+  })
+	game.start()
 }
