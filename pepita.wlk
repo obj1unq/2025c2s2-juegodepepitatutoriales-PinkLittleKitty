@@ -111,6 +111,11 @@ object silvestre {
 			return game.at(3, 0)
 		}
 	}
+
+	method colisiónConPepita() {
+		pepita.image()
+		game.stop()
+	}
 }
 
 object muro {
@@ -129,3 +134,69 @@ object muro {
 	}
 }
 
+object manzana {
+	var property position = game.origin()
+
+	method image() {
+		return "manzana.png"
+	}
+
+	method energiaQueOtorga() {
+		return 100
+	}
+
+	method setUp() {
+		game.addVisual(self)
+		const x = 0.randomUpTo(game.width()).truncate(0)
+    	const y = 0.randomUpTo(game.height()).truncate(0)
+
+		self.position(game.at(x, y))
+	}
+
+	method colisiónConPepita() {
+		pepita.comer(self)
+		game.removeVisual(self)
+	}
+}
+
+object alpiste {
+	var property position = game.origin()
+
+	method image() {
+		return "alpiste.png"
+	}
+
+	method energiaQueOtorga() {
+		return 50
+	}
+
+	method setUp() {
+		game.addVisual(self)
+		const x = 0.randomUpTo(game.width()).truncate(0)
+		const y = 0.randomUpTo(game.height()).truncate(0)
+
+		self.position(game.at(x, y))
+	}
+
+	method colisiónConPepita() {
+		pepita.comer(self)
+		game.removeVisual(self)
+	}
+}
+
+object nido {
+	var property position = game.at(game.width(), game.height() - 1)
+
+	method image() {
+		return "nido.png"
+	}
+
+	method setUp() {
+		game.addVisual(self)
+		self.position(game.at(game.width() - 1, game.height() - 1))
+	}
+
+	method colisiónConPepita() {
+		game.stop()
+	}
+}

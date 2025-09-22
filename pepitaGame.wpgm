@@ -1,6 +1,7 @@
 import wollok.game.*
 import pepita.*
 import tutorial2.*
+import tutorial3.*
 
 program pepitaGame {
 	game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -12,8 +13,11 @@ program pepitaGame {
 	game.boardGround("fondo.jpg")
 	game.addVisual(silvestre)
 
-	pepita.setUp()
 	tutorial2.setUp()
+	tutorial3.setUp()
+	pepita.setUp()
+
+	game.onCollideDo(pepita, { elemento =>  elemento.colisiónConPepita() })
 
 	game.start()
 }
