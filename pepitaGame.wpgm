@@ -1,5 +1,6 @@
 import wollok.game.*
 import pepita.*
+import tutorial2.*
 
 program pepitaGame {
 	game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -9,18 +10,11 @@ program pepitaGame {
 
 
 	game.boardGround("fondo.jpg")
-	game.addVisualCharacter(pepita)
+	game.addVisual(pepita)
 	pepita.centrar()
 	game.addVisual(silvestre)
 
-	game.whenCollideDo(pepita, { elemento =>
-    if (elemento == silvestre) {
-		pepita.imagen("pepita-gris.png")
-		pepita.image()
-	}
-	else {
-		null
-	}
-  })
+	tutorial2.setUp()
+
 	game.start()
 }
