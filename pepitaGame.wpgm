@@ -10,10 +10,9 @@ program pepitaGame {
 
 
 	game.boardGround("fondo.jpg")
-	game.addVisual(pepita)
-	pepita.centrar()
 	game.addVisual(silvestre)
 
+	pepita.setUp()
 	tutorial2.setUp()
 
 	game.start()
