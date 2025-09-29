@@ -136,6 +136,7 @@ object muro {
 
 object manzana {
 	var property position = game.origin()
+	var comida = false;
 
 	method image() {
 		return "manzana.png"
@@ -155,12 +156,18 @@ object manzana {
 
 	method colisiónConPepita() {
 		pepita.comer(self)
+		comida = true;
 		game.removeVisual(self)
+	}
+
+	method comida() {
+		return comida
 	}
 }
 
 object alpiste {
 	var property position = game.origin()
+	var comida = false;
 
 	method image() {
 		return "alpiste.png"
@@ -180,7 +187,12 @@ object alpiste {
 
 	method colisiónConPepita() {
 		pepita.comer(self)
+		comida = true;
 		game.removeVisual(self)
+	}
+
+	method comida() {
+		return comida
 	}
 }
 
@@ -197,6 +209,8 @@ object nido {
 	}
 
 	method colisiónConPepita() {
-		game.stop()
+		if (manzana.comida() && alpiste.comida()) {
+			game.stop()
+		}
 	}
 }
