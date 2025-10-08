@@ -1,7 +1,7 @@
 import pepita.*
 import wollok.game.*
 
-object tutorial2 {
+object movimiento {
 
     method setUp() {
         game.addVisual(pepitaEnergia)
@@ -10,9 +10,5 @@ object tutorial2 {
         keyboard.left().onPressDo({ pepita.volarIzquierda(1) })
         keyboard.up().onPressDo({ pepita.volarArriba(1) })
         keyboard.down().onPressDo({ pepita.volarAbajo(1) })
-
-        game.onTick(800, "caer", { pepita.caer() })
-
-        muro.setUp()
     }
 }

@@ -1,3 +1,4 @@
+import comidas.*
 
 object pepita {
 	var energia = 500
@@ -134,68 +135,6 @@ object muro {
 	}
 }
 
-object manzana {
-	var property position = game.origin()
-	var comida = false;
-
-	method image() {
-		return "manzana.png"
-	}
-
-	method energiaQueOtorga() {
-		return 100
-	}
-
-	method setUp() {
-		game.addVisual(self)
-		const x = 0.randomUpTo(game.width()).truncate(0)
-    	const y = 0.randomUpTo(game.height()).truncate(0)
-
-		self.position(game.at(x, y))
-	}
-
-	method colisiónConPepita() {
-		pepita.comer(self)
-		comida = true;
-		game.removeVisual(self)
-	}
-
-	method comida() {
-		return comida
-	}
-}
-
-object alpiste {
-	var property position = game.origin()
-	var comida = false;
-
-	method image() {
-		return "alpiste.png"
-	}
-
-	method energiaQueOtorga() {
-		return 50
-	}
-
-	method setUp() {
-		game.addVisual(self)
-		const x = 0.randomUpTo(game.width()).truncate(0)
-		const y = 0.randomUpTo(game.height()).truncate(0)
-
-		self.position(game.at(x, y))
-	}
-
-	method colisiónConPepita() {
-		pepita.comer(self)
-		comida = true;
-		game.removeVisual(self)
-	}
-
-	method comida() {
-		return comida
-	}
-}
-
 object nido {
 	var property position = game.at(game.width(), game.height() - 1)
 
@@ -209,8 +148,6 @@ object nido {
 	}
 
 	method colisiónConPepita() {
-		if (manzana.comida() && alpiste.comida()) {
-			game.stop()
-		}
+		game.stop()
 	}
 }

@@ -1,7 +1,10 @@
 import wollok.game.*
 import pepita.*
-import tutorial2.*
+import movimiento.*
+import gravedad.*
+import comidas.*
 import tutorial3.*
+import randomizer.*
 
 program pepitaGame {
 	game.title("Pepita") 	//Valor por defecto "Wollok Game"
@@ -13,7 +16,9 @@ program pepitaGame {
 	game.boardGround("fondo.jpg")
 	game.addVisual(silvestre)
 
-	tutorial2.setUp()
+	movimiento.setUp()
+	gravedad.agregar(pepita)
+	gravedad.iniciarGravedad()
 	tutorial3.setUp()
 	pepita.setUp()
 
